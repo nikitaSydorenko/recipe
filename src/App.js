@@ -9,11 +9,15 @@ const App = () => {
         mealsRes: {}
     })
 
-    useEffect(async () => {
-        const responseMeal = await fetchMealDB()
+    async function fetchMyAPI(){
+        const responseDB = await fetchMealDB()
         setMeals({
-            mealsRes: responseMeal.data
+            mealsRes: responseDB.data
         })
+    }
+
+    useEffect(() => {
+        fetchMyAPI()
     }, [])
 
 

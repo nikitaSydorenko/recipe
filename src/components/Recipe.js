@@ -1,8 +1,7 @@
 import React from 'react'
 import './styles/Recipe.css'
 
-const Recipe = ({meal}) => {
-    console.log(meal)
+const Recipe = ({ meal }) => {
     return (
         <div className="card">
             <img src={meal.strMealThumb} alt="strMealThumb"/>
