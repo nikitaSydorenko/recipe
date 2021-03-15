@@ -5,23 +5,29 @@ import Recipes from "./components/Recipes";
 
 const App = () => {
 
-  const [meals, setMeals] = useState({
-    mealsRes: {}
-  })
-
-  useEffect( async () => {
-    const responseMeal = await fetchMealDB()
-    setMeals({
-      mealsRes: responseMeal.data
+    const [meals, setMeals] = useState({
+        mealsRes: {}
     })
-  }, [])
+
+    async function fetchMyAPI(){
+        const responseDB = await fetchMealDB()
+        setMeals({
+            mealsRes: responseDB.data
+        })
+    }
+
+    useEffect(() => {
+        fetchMyAPI()
+    }, [])
 
 
     return (
-      <div className="App">
-      <Recipes meals={meals.mealsRes.meals}/>
-    </div>
-  );
+        <div className="App">
+            <div className="cards">
+                <Recipes meals={meals.mealsRes.meals}/>
+            </div>
+        </div>
+    );
 }
 
 export default App;
