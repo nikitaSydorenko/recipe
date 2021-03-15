@@ -7,13 +7,13 @@ const CardRecipe = ({ match }) => {
     const id = match.params.idMeal;
     const [meal, setMeal] = useState([])
 
-    async function FetchId() {
+    async function fetchId() {
         const response = await fetchMealById(id)
         setMeal(...response.data.meals)
     }
 
     useEffect(() => {
-        FetchId()
+        fetchId()
     }, [])
 
     return (
