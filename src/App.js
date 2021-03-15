@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react'
 import './App.css';
+import {fetchMealDB} from "./utils/api/fetchMealDB";
+import Recipes from "./components/Recipes";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+
+  const [meals, setMeals] = useState({
+    mealsRes: {}
+  })
+
+  useEffect( async () => {
+    const responseMeal = await fetchMealDB()
+    setMeals({
+      mealsRes: responseMeal.data
+    })
+  }, [])
+
+
+    return (
+      <div className="App">
+      <Recipes meals={meals.mealsRes.meals}/>
     </div>
   );
 }
