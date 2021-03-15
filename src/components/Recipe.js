@@ -1,9 +1,16 @@
 import React from 'react'
+import './styles/Recipe.css'
 
-const Recipe = ({meal = {}}) => {
+const Recipe = ({meal}) => {
     console.log(meal)
     return (
-        <div>{meal.strMeal}</div>
+        <div className="card">
+            <img src={meal.strMealThumb} alt="strMealThumb"/>
+            <div className="container">
+                <h4 className="title"><b><a href="#">{meal.strMeal}</a></b></h4>
+                <p>{meal.strArea}</p>
+            </div>
+        </div>
     )
 }
 
